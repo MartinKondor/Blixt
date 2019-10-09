@@ -31,10 +31,6 @@ void compress_file(char* file_name, char* out_file_name)
     size_t status = 1;
     char* wirte_str;
 
-    record.x = 0;
-    record.y = 0;
-    record.z = 0;
-
     // Start reading and writing to files
     while (status != 0)
     {
@@ -51,6 +47,9 @@ void compress_file(char* file_name, char* out_file_name)
         // fwrite(&record, sizeof(struct Record), 1, out_file_ptr);
 
         memcpy(&prev_record, &record, sizeof(record));
+        record.x = 0;
+        record.y = 0;
+        record.z = 0;
     }
 
     fclose(file_ptr);

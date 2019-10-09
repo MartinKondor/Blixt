@@ -11,7 +11,7 @@
 				<Option object_output="bin/obj/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="C:\Files\Projects\Blixt\bin\test.blx" />
+				<Option parameters="bin\test.blx" />
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="include" />

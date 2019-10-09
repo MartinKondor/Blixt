@@ -19,12 +19,14 @@ int main(int argc, char** argv)
         sprintf(new_file_name, "%s\\%s", base_folder, "test_decompressed");
         decompress_file(input_file_name, new_file_name);
         printf("File decompression, done.\n");
+        system("pause");
     }
     else
     {
         sprintf(new_file_name, "%s\\%s", base_folder, "test.blx");
         compress_file(input_file_name, new_file_name);
         printf("File compression, done.\n");
+        system("pause");
     }
 
     free(new_file_name);

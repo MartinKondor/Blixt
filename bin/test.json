@@ -1,0 +1,21 @@
+{
+    "manifest_version": 2,
+    "name": "LetThereBeDark",
+    "short_name": "ltbd",
+    "version": "1.0",
+    "description": "Set any webpage to dark mode.",
+    "permissions": ["storage", "<all_urls>", "contextMenus"],
+    "icons": {
+        "48": "icons/icon-48.png"
+    },
+    "content_scripts": [
+        {
+            "all_frames": true,
+            "match_about_blank": true,
+            "matches": ["<all_urls>"],
+            "js": ["index.js"],
+            "css" : ["index.css"],
+            "run_at": "document_start"
+        }
+    ]
+}

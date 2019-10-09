@@ -41,6 +41,8 @@ void decompress_file(char* file_name, char* out_file_name)
         {
             current_record_str[current_record_str_index] = '\0';
 
+            // printf("%d\n", (int) strtol(current_record_str, NULL, 16));
+
             switch (current_record_index)
             {
                 case 0:
@@ -64,6 +66,9 @@ void decompress_file(char* file_name, char* out_file_name)
             {
                 fwrite(&record, sizeof(Record), 1, out_file_ptr);
                 current_record_index = 0;
+                record.x = 0;
+                record.y = 0;
+                record.z = 0;
             }
             else
             {
