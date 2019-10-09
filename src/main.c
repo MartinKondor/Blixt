@@ -65,7 +65,7 @@ void compress_file(char* file_name, char* out_file_name)
 
     if (!file_ptr)
     {
-        perror("Unable to open the input file(s).\n");
+        perror("Unable to open the input file(s). (compressing)\n");
         system("pause");
         exit(1);
     }
@@ -115,7 +115,7 @@ void decompress_file(char* file_name, char* out_file_name)
 
     if (!file_ptr)
     {
-        perror("Unable to open the input file(s).\n");
+        perror("Unable to open the input file(s). (decompressing)\n");
         system("pause");
         exit(1);
     }
@@ -172,10 +172,9 @@ void decompress_file(char* file_name, char* out_file_name)
             memset(current_record_str, 0, strlen(current_record_str));
             current_record_str_index = 0;
 
-            if (c == ';')
+            if (c == ';')  // Write record
             {
-                // Write record
-                fwrite(&record, sizeof(struct Record), 1, out_file_ptr);
+                fwrite(&record, sizeof(Record), 1, out_file_ptr);
                 current_record_index = 0;
             }
             else
@@ -204,9 +203,24 @@ int main(int argc, char** argv)
         return 1;
     }
 
-    //compress_file("bin/test.tcm", "bin/test.blx");
-    decompress_file("bin/test.blx", "bin/test_decompressed");
+    char* input_file_name = strdup(argv[1]);
+    char* base_folder = dirname(argv[0]);  // dirname(argv[1]);
+    char* new_file_name = (char*) malloc(FILENAME_MAX * sizeof(char));
 
+    if (strcmp(file_extension(input_file_name), "blx") == 0)
+    {
+        sprintf(new_file_name, "%s\\%s", base_folder, "test_decompressed");
+        decompress_file(input_file_name, new_file_name);
+    }
+    else
+    {
+        sprintf(new_file_name, "%s\\%s", base_folder, "test.blx");
+        compress_file(input_file_name, new_file_name);
+    }
+
+    printf("%s\n", new_file_name);
+
+    free(new_file_name);
     return 0;
 }
 
