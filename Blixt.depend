@@ -4,3 +4,35 @@
 	<stdlib.h>
 	<unistd.h>
 
+1570639574 source:c:\files\projects\blixt\src\main.c
+	"main.h"
+
+1570653871 source:c:\files\projects\blixt\src\compress.c
+	"compress.h"
+
+1570652871 c:\files\projects\blixt\include\record.h
+	<stdio.h>
+	<stdlib.h>
+
+1570639851 c:\files\projects\blixt\include\compress.h
+	<stdio.h>
+	<stdlib.h>
+	"record.h"
+
+1570653006 source:c:\files\projects\blixt\src\decompress.c
+	"decompress.h"
+
+1570639854 c:\files\projects\blixt\include\decompress.h
+	<stdio.h>
+	<stdlib.h>
+	"record.h"
+
+1570639443 c:\files\projects\blixt\include\main.h
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	"record.h"
+
+1570639734 source:c:\files\projects\blixt\src\record.c
+	"record.h"
+

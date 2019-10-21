@@ -112,4 +112,3 @@ int main(const int argc, const char** argv)
     free(new_file_name);
     return 0;
 }
-
