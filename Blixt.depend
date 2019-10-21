@@ -1,7 +1,6 @@
 # depslib dependency file v1.0
-1570632481 source:d:\projects\blixt\src\main.c
+1571663402 source:d:\projects\blixt\src\main.c
 	<stdio.h>
 	<stdlib.h>
 	<unistd.h>
-	<string.h>
 
