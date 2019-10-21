@@ -1,2 +1,1 @@
-Árvíztûrõ tükörfúrógép
-This is a test.
+Árvíztûrõ tükörfúrógép.
