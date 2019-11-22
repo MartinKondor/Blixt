@@ -11,7 +11,7 @@
 				<Option object_output="bin/obj/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="test.txt.blx" />
+				<Option parameters="test.txt" />
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="include" />
@@ -33,6 +33,15 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="include/compressing.h" />
+		<Unit filename="include/decompressing.h" />
+		<Unit filename="include/main.h" />
+		<Unit filename="src/compress.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/decompress.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/main.c">
 			<Option compilerVar="CC" />
 		</Unit>
