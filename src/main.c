@@ -2,8 +2,8 @@
 #include <unistd.h>
 
 #include "main.h"
-#include "compressing.h"
-#include "decompressing.h"
+#include "compress.h"
+#include "decompress.h"
 
 
 /**

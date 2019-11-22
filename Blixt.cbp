@@ -33,8 +33,8 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="include/compressing.h" />
-		<Unit filename="include/decompressing.h" />
+		<Unit filename="include/compress.h" />
+		<Unit filename="include/decompress.h" />
 		<Unit filename="include/main.h" />
 		<Unit filename="src/compress.c">
 			<Option compilerVar="CC" />

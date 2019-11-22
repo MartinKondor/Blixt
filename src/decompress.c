@@ -1,4 +1,4 @@
-#include "decompressing.h"
+#include "decompress.h"
 
 
 void decompress_file(char* file_name)

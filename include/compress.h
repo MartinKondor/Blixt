@@ -18,7 +18,7 @@ Output format:
 Example:
 
 Input: "aabc"
-Output: "|a{2}|b|c|"
+Output: "|a{2}|b|c|;file_extension"
 
 */
 void compress_file(char* file_name);

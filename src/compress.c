@@ -1,4 +1,4 @@
-#include "compressing.h"
+#include "compress.h"
 
 
 void compress_file(char* file_name)
@@ -50,15 +50,23 @@ void compress_file(char* file_name)
         ch = fgetc(file_ptr);
     }
 
+    fclose(file_ptr);
     output_buffer[out_index] = '\0';  // Adding the terminating character
+
+    // Write the original file extension
+    // into the output buffer
+    char* file_ext = file_extension(file_name);
+    sprintf(output_buffer, "%s;%s", output_buffer, file_ext);
+    out_index += strlen(file_ext) + 1;
 
     // Free up some memory
     memmove(output_buffer, output_buffer - (strlen(output_buffer) - out_index), strlen(output_buffer));
 
-    printf("Output buffer: \n%s", output_buffer);
+    // Write output buffer to a new file
+    // FILE* output_file_ptr;
+    printf(output_buffer);
 
     free(output_buffer);
-    fclose(file_ptr);
     // char* file_ext = file_extension(file_name);
     // printf("%s, %s", file_name, file_ext);
 }
