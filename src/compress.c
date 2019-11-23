@@ -3,8 +3,7 @@
 
 void compress_file(char* file_name)
 {
-    FILE* file_ptr;
-    file_ptr = fopen(file_name, "rb");
+    FILE* file_ptr = fopen(file_name, "rb");
 
     if (file_ptr == NULL)
     {
@@ -12,11 +11,13 @@ void compress_file(char* file_name)
         exit(0);
     }
 
-    char ch = fgetc(file_ptr);
-    char prev_ch = '\0';
-    char* output_buffer = malloc(1024);
+    unsigned int output_buffer_size = 10240;
     unsigned int counter = 0;
     unsigned int out_index = 0;
+    char ch = fgetc(file_ptr);
+    char prev_ch = '\0';
+    char* output_buffer = malloc(output_buffer_size);
+    char* tmp_output_buffer = NULL;
 
     while (ch != EOF)
     {
@@ -26,6 +27,25 @@ void compress_file(char* file_name)
         }
         else
         {
+
+            // Allocate more memory if needed
+            if (out_index >= output_buffer_size)
+            {
+                output_buffer_size += 10240;
+                tmp_output_buffer = realloc(output_buffer, output_buffer_size);
+
+                if (tmp_output_buffer != NULL)
+                {
+                    output_buffer = tmp_output_buffer;
+                }
+                else
+                {
+                    printf("Error at reallocating memory.");
+                    free(output_buffer);
+                    exit(1);
+                }
+            }
+
             // Write character to buffer
             if (counter > 0)
             {
@@ -42,7 +62,7 @@ void compress_file(char* file_name)
                 free(counter_str);
             }
 
-            output_buffer[out_index++] = '|';
+            // output_buffer[out_index++] = '|';
             output_buffer[out_index++] = ch;
             prev_ch = ch;
             counter = 0;
@@ -62,11 +82,15 @@ void compress_file(char* file_name)
     // Free up some memory
     memmove(output_buffer, output_buffer - (strlen(output_buffer) - out_index), strlen(output_buffer));
 
+    // Determine output file name
+    char output_file_name[FILENAME_MAX];
+    sprintf(output_file_name, "%s.blx", file_name);
+
     // Write output buffer to a new file
-    // FILE* output_file_ptr;
-    printf(output_buffer);
+    FILE* output_file_ptr = fopen(output_file_name, "wb");
+    fprintf(output_file_ptr, output_buffer);
+    fclose(output_file_ptr);
 
     free(output_buffer);
-    // char* file_ext = file_extension(file_name);
-    // printf("%s, %s", file_name, file_ext);
+    if (tmp_output_buffer != NULL) free(tmp_output_buffer);
 }
