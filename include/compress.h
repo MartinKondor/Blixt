@@ -11,7 +11,6 @@
 
 Output format:
 
-- Each byte is separated with a | sign.
 - Each clone of a byte is counted and the counter value
   is between {counted_value} next to the byte.
 

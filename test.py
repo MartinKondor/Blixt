@@ -36,7 +36,21 @@ with open('bin/test.txt.blx', 'r') as file:
 print()
 print('Size comparision')
 print('=======')
-print('Original size: \t\t\t', len(test_data))
-print('Compressed size: \t\t', len(compressed_data))
-print('Compression effectiveness: \t', '{}%'.format(int(100 - len(compressed_data) / (len(test_data) / 100))))
+print('Original size: \t\t\t{} byte'.format(len(test_data)))
+print('Compressed size: \t\t{} byte'.format(len(compressed_data)))
+print('Compression effectiveness: \t{}%'.format(int(100 - len(compressed_data) / (len(test_data) / 100))))
+print()
+
+# Testing decompression
+os.system(r'.\bin\blx.exe test.txt.blx')
+
+# Load decompressed data
+decompressed_data = None
+with open('bin/test.txt', 'r') as file:
+    decompressed_data = file.read()
+
+print()
+print('Accuracy test')
+print('=======')
+print('{}% accurate'.format(100 * len(decompressed_data) / [decompressed_data[i] == test_data[i] for i in range(len(decompressed_data))].count(True)))
 print()

@@ -28,7 +28,7 @@ char* file_extension(char* file_name)
 
 void blixt_file(char* file_name)
 {
-    if (file_extension(file_name) == "blx")
+    if (strcmp(file_extension(file_name), "blx") == 0)
     {
         decompress_file(file_name);
     }
