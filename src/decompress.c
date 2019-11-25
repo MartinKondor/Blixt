@@ -44,8 +44,36 @@ void decompress_file(char* file_name)
     file_name[strlen(file_name) - 4] = '\0';
 
     // Processing the compressed file contents
-    /// TODO
+    unsigned int i = 0, inBrackets = 0;
+    char* counter = (char*) malloc(16);
+    ch = '\0';
 
+    for (; i < strlen(output_buffer); i++)
+    {
+        if (output_buffer[i] == '{') 
+        {
+            inBrackets = 1;
+            continue;
+        }
+        else if (output_buffer[i] == '}')
+        {
+            printf("%u\n", atoi(counter));
+
+            inBrackets = 0;
+            counter = "";
+            continue;
+        }
+
+        if (inBrackets)
+        {
+            sprintf(counter, "%s%c", counter, ch);
+            continue;
+        }
+
+        ch = output_buffer[i];
+    }
+
+    free(counter);
     free(output_buffer);
     if (tmp_output_buffer != NULL) free(tmp_output_buffer);
 }

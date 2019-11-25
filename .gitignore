@@ -1,5 +1,5 @@
-test.txt
-test.txt.blx
+bin/*.txt
+bin/*.blx
 
 # Prerequisites
 *.d

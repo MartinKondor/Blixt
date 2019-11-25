@@ -4,6 +4,7 @@
 #define _OPEN_SYS_ITOA_EXT
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "main.h"
 
@@ -12,12 +13,13 @@
 Output format:
 
 - Each clone of a byte is counted and the counter value
-  is between {counted_value} next to the byte.
+  is between {counted_value} next to the byte. 
+  If the counted_value > 3.
 
 Example:
 
-Input: "aabc"
-Output: "|a{2}|b|c|;file_extension"
+Input: "aaaaabc"
+Output: "a{5}bc"
 
 */
 void compress_file(char* file_name);
