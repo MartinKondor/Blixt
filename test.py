@@ -38,7 +38,7 @@ print('Size comparision')
 print('=======')
 print('Original size: \t\t\t{} byte'.format(len(test_data)))
 print('Compressed size: \t\t{} byte'.format(len(compressed_data)))
-print('Compression effectiveness: \t{}%'.format(int(100 - len(compressed_data) / (len(test_data) / 100))))
+print('Compression effectiveness: \t{}%'.format(100 - len(compressed_data) / (len(test_data) / 100)))
 print()
 
 # Testing decompression
