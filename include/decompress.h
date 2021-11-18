@@ -1,12 +1,14 @@
-#ifndef DECOMPRESSING_H_INCLUDED
-#define DECOMPRESSING_H_INCLUDED
+#ifndef _DECOMPRESS_H_
+#define _DECOMPRESS_H_
 
-#define _OPEN_SYS_ITOA_EXT
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <functional>
+#include "FilePipe.h"
 
 
-void decompress_file(char* file_name);
+void decompress(const std::string cwd, const std::string file_name) {
+    std::string file_path = cwd + "/" + file_name;
+    FilePipe pipe(file_path, file_path + ".blx");
+    // pipe.start([]() {});
+}
 
-#endif // DECOMPRESSING_H_INCLUDED
+#endif

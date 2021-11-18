@@ -1,27 +1,14 @@
-#ifndef COMPRESSING_H_INCLUDED
-#define COMPRESSING_H_INCLUDED
+#ifndef _COMPRESS_H_
+#define _COMPRESS_H_
 
-#define _OPEN_SYS_ITOA_EXT
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <functional>
+#include "FilePipe.h"
 
-#include "main.h"
 
-/**
+void compress(const std::string cwd, const std::string file_name) {
+    std::string file_path = cwd + "/" + file_name;
+    FilePipe pipe(file_path, file_path + ".blx");
+    // pipe.start([]() {});
+}
 
-Output format:
-
-- Each clone of a byte is counted and the counter value
-  is between {counted_value} next to the byte. 
-  If the counted_value > 3.
-
-Example:
-
-Input: "aaaaabc"
-Output: "a{5}bc"
-
-*/
-void compress_file(char* file_name);
-
-#endif // COMPRESSING_H_INCLUDED
+#endif

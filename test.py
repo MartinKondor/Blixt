@@ -8,8 +8,8 @@ import random
 print('Blixt tester.')
 
 # Make sure the executable exists
-if not os.path.exists('bin/blx.exe'):
-    print('Cannot find "blx.exe".')
+if not os.path.exists('bin/blx.o'):
+    print('Cannot find "blx.o" file.')
     exit(0)
 
 # Generate test data
@@ -26,12 +26,17 @@ with open('bin/test.txt', 'w+') as file:
     file.write(test_data)
 
 # Compress test data
-os.system(r'.\bin\blx.exe test.txt')
+os.system('bin/blx.o bin/test.txt')
 
 # Load compressed data
-compressed_data = None
-with open('bin/test.txt.blx', 'r') as file:
-    compressed_data = file.read()
+compressed_data = ""
+try:
+    with open('bin/test.txt.blx', 'r') as file:
+        compressed_data = file.read()
+except:
+    print()
+    print("No compressed file found, test stops.")
+    exit(0)
 
 print()
 print('Size comparision')
@@ -42,7 +47,7 @@ print('Compression effectiveness: \t{}%'.format(100 - len(compressed_data) / (le
 print()
 
 # Testing decompression
-os.system(r'.\bin\blx.exe test.txt.blx')
+os.system(r'.\bin\blx.o test.txt.blx')
 
 # Load decompressed data
 decompressed_data = None

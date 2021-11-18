@@ -1,13 +1,17 @@
+.DEFAULT_GOAL := default
+
+default:
+	@g++ src/* -Iinclude -o bin/blx.o
 
 comp:
-	@gcc src/* -Iinclude -o bin/blx.exe
-	@bin/blx.exe bin/test.txt
+	@g++ src/* -Iinclude -o bin/blx.o
+	@bin/blx.o bin/test.txt
 
 decomp:
-	@gcc src/* -Iinclude -o bin/blx.exe
-	@bin/blx.exe bin/test.txt
-	@bin/blx.exe bin/test.txt.blx
+	@g++ src/* -Iinclude -o bin/blx.o
+	@bin/blx.o bin/test.txt
+	@bin/blx.o bin/test.txt.blx
 
 test:
-	@gcc src/* -Iinclude -o bin/blx.exe
+	@g++ src/* -Iinclude -o bin/blx.o
 	@python test.py
