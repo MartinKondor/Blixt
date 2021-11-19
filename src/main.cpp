@@ -17,7 +17,7 @@
 
 
 int main(int argc, char** argv) {
-    std::cout << std::endl;
+    // std::cout << std::endl;
     std::cout << " ____  __    ____  _  _  ____" << std::endl;
     std::cout << "(  _ \\(  )  (_  _)( \\/ )(_  _)" << std::endl;
     std::cout << " ) _ < )(__  _)(_  )  (   )(" << std::endl;
@@ -26,27 +26,21 @@ int main(int argc, char** argv) {
 
     // Check for the file's existence
     if (argc < 2) {
-        /// TODO: print help text
+        std::cout << "No input file provided. The program stops." << std::endl;
         return 1;
     }
-
 
     // Get the current working directory
     char buffer[MAX_FOLDER_LENGTH];
     std::string cwd = getcwd(buffer, sizeof(buffer));
-
     std::string file_name = argv[1];
 
-    debug<std::string>(file_name, "file_name");
-    debug<std::string>(cwd, "cwd");
-    debug<std::string>(cwd + "/" + file_name, "file_path");
-
-    if (get_extension(file_name) == "blx") {
-        debug<std::string>("Decompressing file...");
+    if (get_extension(file_name) == ".blx") {
+        debug<std::string>("decompressing...");
         decompress(cwd, file_name);
     }
     else {
-        debug<std::string>("Compressing file...");
+        debug<std::string>("compressing...");
         compress(cwd, file_name);
     }
     return 0;

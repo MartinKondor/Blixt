@@ -47,7 +47,7 @@ print('Compression effectiveness: \t{}%'.format(100 - len(compressed_data) / (le
 print()
 
 # Testing decompression
-os.system(r'.\bin\blx.o test.txt.blx')
+os.system("./bin/blx.o test.txt.blx test.ublx.txt")
 
 # Load decompressed data
 decompressed_data = None

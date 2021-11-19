@@ -3,6 +3,7 @@
 
 #include <fstream>
 #include <string>
+#include <math.h>
 
 
 std::string get_extension(const std::string file_name) {
