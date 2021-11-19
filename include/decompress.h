@@ -20,7 +20,13 @@ char decompress_chunk(const std::string &s) {
         result += s[i];
     }
 
-    return static_cast<char>(std::bitset<8>(result).to_ulong() + 64);
+    /*
+    debug<decltype(s)>(s, "s");
+    debug<decltype(result)>(result, "result");
+    debug<size_t>(result.length(), "result.length()");
+    std::cout << std::endl;
+    */
+    return static_cast<char>(std::bitset<8>(result).to_ulong() + 49);
 }
 
 std::string decompress_string(const std::string &s) {
