@@ -6,27 +6,7 @@
 
 
 char decompress_chunk(const std::string &s) {
-    std::string result = "";
-    char last_ch;
-
-    for (size_t i = 0; i < s.length(); i++) {
-        if (s[i] != '0' && s[i] != '1') {
-            size_t n = s[i] - '0';  // Convert char to int 
-            for (size_t j = 0; j < n; j++) {
-                result += s[i - 1];
-            }
-            continue;
-        }
-        result += s[i];
-    }
-
-    /*
-    debug<decltype(s)>(s, "s");
-    debug<decltype(result)>(result, "result");
-    debug<size_t>(result.length(), "result.length()");
-    std::cout << std::endl;
-    */
-    return static_cast<char>(std::bitset<8>(result).to_ulong() + 49);
+    return static_cast<char>(std::bitset<8>(s).to_ulong()); 
 }
 
 std::string decompress_string(const std::string &s) {

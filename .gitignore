@@ -1,5 +1,4 @@
-bin/*.txt
-bin/*.blx
+bin/*.o
 
 # Prerequisites
 *.d

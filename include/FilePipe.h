@@ -14,10 +14,8 @@ class FilePipe {
     std::string to_file;
 
     public:
-    FilePipe(const std::string _from_file="", std::string _to_file="") : from_file(_from_file), to_file(_to_file) {
+    FilePipe(const std::string _from_file="", std::string _to_file="", bool _is_binary=false) : from_file(_from_file), to_file(_to_file) {
         can_start = !from_file.empty() && !from_file.empty();
-        debug<std::string>(from_file, "FilePipe.from_file");
-        debug<std::string>(to_file, "FilePipe.to_file");
     }
 
     void start(const std::function<std::string(std::string)> &func) const {
@@ -37,11 +35,15 @@ class FilePipe {
         std::string word;
         while (input_file.good()) {
             std::getline(input_file, word);
-            ouput_file << func(word) + "\n";
+
+            if (word.length() != 0) {
+                ouput_file << func(word) + "\n";
+            }
         }
 
         ouput_file.close();
         input_file.close();
+
     }
 };
 

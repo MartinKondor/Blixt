@@ -57,4 +57,17 @@ with open('bin/test.txt', 'r') as file:
 print()
 print('Accuracy test')
 print('=======')
-print('{}% accurate'.format(100 * len(decompressed_data) / [decompressed_data[i] == test_data[i] for i in range(len(decompressed_data))].count(True)))
+#print('{}% accurate'.format(100 * len(decompressed_data) / [decompressed_data[i] == test_data[i] for i in range(len(decompressed_data))].count(True)))
+
+n_correct = 0
+test_data = [_.strip() for _ in test_data.splitlines() if _]
+decompressed_data = [_.strip() for _ in decompressed_data.splitlines() if _]
+
+for d1, d2 in zip(test_data, decompressed_data):
+    if d1 == d2:
+        n_correct += 1
+    else:
+        print("[CERROR] d1 =", d1, "but d2 =", d2)
+
+print(100 * len(decompressed_data) / n_correct, '%')
+

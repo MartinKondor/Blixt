@@ -7,7 +7,7 @@
 #include <unistd.h>
 #endif
 
-#define _DEBUG_
+//#define _DEBUG_
 #define MAX_FOLDER_LENGTH 260
 
 #include "decompress.h"
@@ -36,11 +36,9 @@ int main(int argc, char** argv) {
     std::string file_name = argv[1];
 
     if (get_extension(file_name) == ".blx") {
-        debug<std::string>("decompressing...");
         decompress(cwd, file_name);
     }
     else {
-        debug<std::string>("compressing...");
         compress(cwd, file_name);
     }
     return 0;
